@@ -6,7 +6,8 @@ import toast from "react-hot-toast";
 
 const LogIn = () => {
   const [errorMessage, setErrorMessage] = useState("");
-  const { user, userLogin, setUser, provider, googleSignIn } = use(AuthContext);
+  const { user, userLogin, setUser, provider, googleSignIn, setIsLoading } =
+    use(AuthContext);
   console.log(user);
 
   const navigate = useNavigate();
@@ -22,6 +23,7 @@ const LogIn = () => {
     userLogin(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
+        setIsLoading(true);
         console.log(user);
         setUser(user);
         setErrorMessage("");
@@ -41,6 +43,7 @@ const LogIn = () => {
     googleSignIn(provider)
       .then((result) => {
         const user = result.user;
+        setIsLoading(true);
         setUser(user);
         // console.log(user);
         /*   if (location?.state) {

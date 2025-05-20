@@ -4,7 +4,7 @@ import AuthContext from "./context/AuthContext";
 import toast from "react-hot-toast";
 
 const Register = () => {
-  const { createUser, setUser, updateUser } = use(AuthContext);
+  const { createUser, setUser, updateUser, setIsLoading } = use(AuthContext);
   const [errorMessage, setErrorMessage] = useState("");
 
   const navigate = useNavigate();
@@ -19,14 +19,17 @@ const Register = () => {
 
     if (password.length < 6) {
       setErrorMessage("❌ Must be at least 6 characters long.");
+
       return;
     }
     if (!/[a-z]/.test(password)) {
       setErrorMessage("❌ Must contain at least one lowercase letter.");
+
       return;
     }
     if (!/[A-Z]/.test(password)) {
       setErrorMessage("❌ Must contain at least one uppercase letter.");
+
       return;
     }
 
