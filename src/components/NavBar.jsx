@@ -84,7 +84,7 @@ const NavBar = () => {
               <div
                 tabIndex={0}
                 role="button"
-                className="btn m-1 w-9 h-9 rounded-full overflow-hidden"
+                className="btn w-9 h-9 b-0 p-0 rounded-full overflow-hidden"
               >
                 <img
                   className="w-full h-full object-cover"
