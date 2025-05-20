@@ -26,9 +26,11 @@ const NavBar = () => {
         Home
       </NavLink>
 
-      <NavLink className="py-3" to="/addrecipes">
-        Add Recipes
-      </NavLink>
+      {user && (
+        <NavLink className="py-3" to="/addrecipes">
+          Add Recipes
+        </NavLink>
+      )}
       <NavLink className="py-3" to="/allrecipes">
         All Recipes
       </NavLink>
