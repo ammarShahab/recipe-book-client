@@ -8,6 +8,7 @@ import MyRecipes from "./components/MyRecipes";
 import LogIn from "./components/LogIn";
 import Register from "./components/Register";
 import AuthLayout from "./layouts/AuthLayout";
+import Error404 from "./components/Error404";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       { path: "/auth/login", element: <LogIn></LogIn> },
       { path: "/auth/register", element: <Register></Register> },
     ],
+  },
+  {
+    path: "/*",
+    Component: Error404,
   },
 ]);
 
