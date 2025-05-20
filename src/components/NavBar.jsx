@@ -2,10 +2,23 @@ import React, { use } from "react";
 import { Link, NavLink } from "react-router";
 import logo from "../assets/images/logo.png";
 import AuthContext from "./context/AuthContext";
+import toast from "react-hot-toast";
 
 const NavBar = () => {
-  const { user } = use(AuthContext);
+  const { user, logOut, setUser } = use(AuthContext);
   console.log(user);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        setUser(null);
+        toast.success("Successfully Logged Out");
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const links = (
     <>
@@ -86,10 +99,7 @@ const NavBar = () => {
                   <a>{user.displayName}</a>
                 </li>
                 <li>
-                  <Link
-                    to="/"
-                    //   onClick={handleLogOut}
-                  >
+                  <Link to="/" onClick={handleLogOut}>
                     Log Out
                   </Link>
                 </li>

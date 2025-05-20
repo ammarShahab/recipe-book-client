@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 
 const LogIn = () => {
   const [errorMessage, setErrorMessage] = useState("");
-  const { user, userLogin, setUser, provider } = use(AuthContext);
+  const { user, userLogin, setUser, provider, googleSignIn } = use(AuthContext);
   console.log(user);
 
   const navigate = useNavigate();
