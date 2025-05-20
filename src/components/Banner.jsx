@@ -8,7 +8,7 @@ const Banner = () => {
         <img
           src={bannerImage}
           alt="Banner Image"
-          className="w-full h-full object-cover opacity-60"
+          className="w-full h-full object-cover opacity-80"
         />
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center font-bitter">
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 ">

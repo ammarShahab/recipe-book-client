@@ -68,38 +68,67 @@ const NavBar = () => {
       <div className="navbar-center menu menu-horizontal hidden sm:hidden md:hidden lg:hidden xl:block px-1 space-x-4 text-[#dedbda]">
         {links}
       </div>
-      <div className="navbar-end hidden lg:flex">
-        {/* <ul className="menu menu-horizontal px-1 space-x-4 ">{links}</ul> */}
-      </div>
+      {/* <div className="navbar-end hidden lg:flex">
+        <ul className="menu menu-horizontal px-1 space-x-4 ">{links}</ul>
+      </div> */}
       <div className="navbar-end space-x-4">
         {/* <ul className=" menu menu-horizontal hidden sm:hidden md:hidden lg:hidden xl:block px-1 space-x-4"></ul> */}
         {/* {user ? (
           <> */}
-        <Link to="/myprofile" className="w-9 h-9 rounded-full overflow-hidden">
+        <div className="dropdown dropdown-bottom ">
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn m-1 w-9 h-9 rounded-full overflow-hidden"
+          >
+            <img
+              className="w-full h-full object-cover"
+              // src={`${user ? user.photoURL : ""}`}
+            />
+          </div>
+          <ul
+            tabIndex={0}
+            className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+          >
+            <li>
+              <a>Ammar Shahab</a>
+            </li>
+            <li>
+              <Link
+                to="/"
+                //   onClick={handleLogOut}
+              >
+                Log Out
+              </Link>
+            </li>
+          </ul>
+        </div>
+
+        {/* <Link to="/myprofile" className="w-9 h-9 rounded-full overflow-hidden">
           <img
             className="w-full h-full object-cover"
             // src={`${user ? user.photoURL : ""}`}
           />
-        </Link>
+        </Link> */}
 
-        <Link
+        {/* <Link
           to="/"
           //   onClick={handleLogOut}
           className="btn shadow-none bg-[#ffcc70] text-black border-0"
         >
           Log Out
-        </Link>
+        </Link> */}
         {/*  </>
         ) : ( */}
         {/* <> */}
         <Link
-          to="/auth/signin"
+          to="/auth/login"
           className="btn btn-active btn-info bg-[#d9cab3] border-0"
         >
           Log In
         </Link>
 
-        <Link to="/auth/signup" className="btn btn-active btn-warning">
+        <Link to="/auth/register" className="btn btn-active btn-warning">
           Register
         </Link>
         {/* </> */}
