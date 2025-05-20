@@ -1,11 +1,41 @@
-import React, { use } from "react";
+import React, { use, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import AuthContext from "./context/AuthContext";
+import toast from "react-hot-toast";
 
 const LogIn = () => {
-  const user = use(AuthContext);
+  const [errorMessage, setErrorMessage] = useState("");
+  const { user, userLogin, setUser } = use(AuthContext);
   console.log(user);
+
+  const navigate = useNavigate();
+
+  const handleLogIn = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    // console.log(email, password);
+
+    // console.log(googleSignIn);
+
+    userLogin(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+        setUser(user);
+        setErrorMessage("");
+
+        toast.success("Logged In Successfully");
+        navigate("/");
+      })
+      .catch((error) => {
+        // const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage);
+        setErrorMessage(errorMessage);
+      });
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#f4e7e1af] py-7">
@@ -13,7 +43,7 @@ const LogIn = () => {
         <h2 className="text-3xl font-bold text-center text-gray-800">
           Please Log In
         </h2>
-        <form className="space-y-4">
+        <form onSubmit={handleLogIn} className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Email
@@ -43,7 +73,7 @@ const LogIn = () => {
           >
             Login
           </button>
-          {/* <p className=" text-xs text-red-400">{errorMessage}</p> */}
+          <p className=" text-xs text-red-400">{errorMessage}</p>
         </form>
         <div className="flex items-center justify-between text-sm">
           <Link

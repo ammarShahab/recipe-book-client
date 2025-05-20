@@ -67,7 +67,7 @@ const NavBar = () => {
       <div className="navbar-end space-x-4">
         {user ? (
           <>
-            <div className="dropdown dropdown-bottom ">
+            <div className="dropdown dropdown-bottom dropdown-end">
               <div
                 tabIndex={0}
                 role="button"
