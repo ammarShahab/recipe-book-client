@@ -9,6 +9,8 @@ import LogIn from "./components/LogIn";
 import Register from "./components/Register";
 import AuthLayout from "./layouts/AuthLayout";
 import Error404 from "./components/Error404";
+import PrilvateRouter from "./components/provider/PrivateRouter";
+import PrivateRouter from "./components/provider/PrivateRouter";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +20,14 @@ const router = createBrowserRouter([
       { path: "/", element: <Home></Home> },
       { path: "/allrecipes", element: <AllRecipes></AllRecipes> },
       { path: "/addrecipes", element: <AddRecipe></AddRecipe> },
-      { path: "/myrecipes", element: <MyRecipes></MyRecipes> },
+      {
+        path: "/myrecipes",
+        element: (
+          <PrivateRouter>
+            <MyRecipes></MyRecipes>
+          </PrivateRouter>
+        ),
+      },
     ],
   },
   {
