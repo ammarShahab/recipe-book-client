@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 
 const LogIn = () => {
   const [errorMessage, setErrorMessage] = useState("");
-  const { user, userLogin, setUser } = use(AuthContext);
+  const { user, userLogin, setUser, provider } = use(AuthContext);
   console.log(user);
 
   const navigate = useNavigate();
@@ -37,6 +37,25 @@ const LogIn = () => {
       });
   };
 
+  const handleGoogleLogin = () => {
+    googleSignIn(provider)
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+        // console.log(user);
+        /*   if (location?.state) {
+          navigate(location.state);
+          // navigate(location?.state ? location.state : "/");
+        } else {
+          navigate("/");
+        } */
+        toast.success("Logged In Successfully");
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#f4e7e1af] py-7">
       <div className="w-full max-w-md p-8 space-y-6 rounded-2xl shadow-lg mt-10  bg-[#F2EDEA]">
@@ -86,7 +105,7 @@ const LogIn = () => {
 
         <div className="flex items-center justify-center gap-4">
           <button
-            // onClick={handleGoogleLogin}
+            onClick={handleGoogleLogin}
             className="flex justify-center items-center gap-2 w-full px-4 py-2 border rounded-lg hover:bg-gray-100 "
           >
             <FcGoogle size={20} /> Continue with Google
