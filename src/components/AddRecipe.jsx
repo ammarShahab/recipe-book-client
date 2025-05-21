@@ -229,7 +229,7 @@ const AddRecipe = () => {
             id="likes"
             name="likes"
             defaultValue={0}
-            readOnly
+            // readOnly
             className="border border-gray-300 rounded-md p-2 bg-gray-100 cursor-not-allowed"
           />
         </div>

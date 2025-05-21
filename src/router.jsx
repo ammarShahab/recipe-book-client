@@ -11,6 +11,8 @@ import AuthLayout from "./layouts/AuthLayout";
 import Error404 from "./components/Error404";
 import PrilvateRouter from "./components/provider/PrivateRouter";
 import PrivateRouter from "./components/provider/PrivateRouter";
+import Loading from "./components/Loading";
+import RecipeDetails from "./components/RecipeDetails";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +20,12 @@ const router = createBrowserRouter([
     element: <RootLayout></RootLayout>,
     children: [
       { path: "/", element: <Home></Home> },
-      { path: "/allrecipes", element: <AllRecipes></AllRecipes> },
+      {
+        path: "/allrecipes",
+        loader: () => fetch("http://localhost:3000/recipes"),
+        element: <AllRecipes></AllRecipes>,
+        hydrateFallbackElement: <Loading></Loading>,
+      },
       { path: "/addrecipes", element: <AddRecipe></AddRecipe> },
       {
         path: "/myrecipes",
@@ -27,6 +34,17 @@ const router = createBrowserRouter([
             <MyRecipes></MyRecipes>
           </PrivateRouter>
         ),
+      },
+      {
+        path: "/recipe/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/recipes/${params.id}`),
+        element: (
+          <PrivateRouter>
+            <RecipeDetails></RecipeDetails>
+          </PrivateRouter>
+        ),
+        hydrateFallbackElement: <Loading></Loading>,
       },
     ],
   },
