@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
+import { Typewriter } from "react-simple-typewriter";
 
 const TopRecipes = () => {
   const [topRecipes, setTopRecipes] = useState([]);
@@ -16,9 +17,24 @@ const TopRecipes = () => {
   console.log(topRecipes);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-6 mt-10 mb-20">
-      <h1 className="text-5xl font-bold mb-6 font-bitter text-center">
-        Top Recipes
+    <div className="max-w-7xl mx-auto px-4 py-6 mt-10 mb-20 bg-lime-100 p-4 rounded-2xl">
+      <h1 className="text-5xl font-bold mb-6 font-bitter text-center text-amber-950">
+        Top
+        <Typewriter
+          words={[
+            " Savory Secrets",
+            " Tastes to Try",
+            " Culinary Picks",
+            " Dish Delights",
+            " Recipes",
+          ]}
+          loop={true}
+          cursor
+          cursorStyle="_"
+          typeSpeed={70}
+          deleteSpeed={50}
+          delaySpeed={1000}
+        ></Typewriter>
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {topRecipes.map((recipe) => (
@@ -26,7 +42,7 @@ const TopRecipes = () => {
             <img
               src={recipe.image}
               alt={recipe.title}
-              className="w-full h-48 object-cover bg-gray-200"
+              className="w-full h-48 object-cover bg-gray-200 rounded-lg"
             />
             <h3 className="text-lg font-semibold text-gray-800 mt-3">
               {recipe.title}
