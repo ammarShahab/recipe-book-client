@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router";
 import logo from "../assets/images/logo.png";
 import AuthContext from "./context/AuthContext";
 import toast from "react-hot-toast";
+import { Tooltip } from "react-tooltip";
 
 const NavBar = () => {
   const { user, logOut, setUser } = use(AuthContext);
@@ -84,7 +85,35 @@ const NavBar = () => {
       <div className="navbar-end space-x-4">
         {user ? (
           <>
-            <div className="dropdown dropdown-bottom dropdown-end">
+            <div>
+              <a id="clickable">◕‿‿◕</a>
+              <Tooltip anchorSelect="#clickable" clickable>
+                <Link to="/" onClick={handleLogOut}>
+                  Log Out
+                </Link>
+              </Tooltip>
+            </div>
+            {/*  <a id="clickable">
+              <div className="btn w-9 h-9 b-0 p-0 rounded-full overflow-hidden">
+                <img
+                  className="w-full h-full object-cover"
+                  src={`${user ? user?.photoURL : ""}`}
+                />
+              </div>
+            </a>
+            <Tooltip
+              // id="my-tooltip-click"
+              content={user?.displayName}
+              // events={["click"]}
+              anchorSelect="#clickable"
+              clickable
+            >
+              <Link to="/" onClick={handleLogOut}>
+                Log Out
+              </Link>
+            </Tooltip> */}
+
+            {/* <div className="dropdown dropdown-bottom dropdown-end">
               <div
                 tabIndex={0}
                 role="button"
@@ -108,7 +137,7 @@ const NavBar = () => {
                   </Link>
                 </li>
               </ul>
-            </div>
+            </div> */}
           </>
         ) : (
           <>
