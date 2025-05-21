@@ -89,15 +89,23 @@ const NavBar = () => {
               {/* <a id="clickable"> */}
               <img
                 id="clickable"
-                className="btn w-9 h-9 b-0 p-0 rounded-full overflow-hidden"
+                className="btn w-9 h-9 b-0 p-0 rounded-full overflow-hidden object-cover"
                 src={`${user ? user?.photoURL : ""}`}
               />
               {/* </a> */}
-              <Tooltip anchorSelect="#clickable" clickable>
-                <Link to="/" onClick={handleLogOut}>
+              <Tooltip
+                className="p-4 space-y-4"
+                anchorSelect="#clickable"
+                clickable
+              >
+                <p>{user?.displayName}</p>
+                <Link
+                  className="bg-amber-50 text-black p-0.5 rounded-sm"
+                  to="/"
+                  onClick={handleLogOut}
+                >
                   Log Out
                 </Link>
-                <p>{user?.displayName}</p>
               </Tooltip>
             </div>
             {/*  <a id="clickable">
