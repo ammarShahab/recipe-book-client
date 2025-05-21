@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { data } from "react-router";
+import Swal from "sweetalert2";
 
 const AddRecipe = () => {
   const [isChecked, setIsChecked] = useState([]);
@@ -27,7 +29,8 @@ const AddRecipe = () => {
     const cuisine = form.cuisine.value;
     const prepTime = form.prepTime.value;
     const likes = form.likes.value;
-    console.log(
+
+    /* console.log(
       image,
       title,
       ingredients,
@@ -36,7 +39,39 @@ const AddRecipe = () => {
       prepTime,
       likes,
       isChecked
-    );
+    ); */
+    const newAddedRecipes = {
+      image,
+      title,
+      ingredients,
+      instructions,
+      cuisine,
+      prepTime,
+      likes,
+      isChecked,
+    };
+
+    console.log(newAddedRecipes);
+
+    fetch("http://localhost:3000/recipes", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newAddedRecipes),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("recipes added to the dB succesfully", data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Recipe Added Successfully",
+            icon: "success",
+            draggable: true,
+          });
+          form.reset();
+        }
+      });
   };
   return (
     <div className="max-w-2xl mx-auto p-6 bg-white shadow-md rounded-lg mt-10 mb-20">
@@ -193,7 +228,7 @@ const AddRecipe = () => {
             type="number"
             id="likes"
             name="likes"
-            value={0}
+            defaultValue={0}
             readOnly
             className="border border-gray-300 rounded-md p-2 bg-gray-100 cursor-not-allowed"
           />
