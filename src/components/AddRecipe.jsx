@@ -52,8 +52,6 @@ const AddRecipe = () => {
             type="text"
             id="image"
             name="image"
-            /* value={formData.image}
-            onChange={handleInputChange} */
             placeholder="Enter image URL"
             className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
@@ -67,8 +65,6 @@ const AddRecipe = () => {
             type="text"
             id="title"
             name="title"
-            /* value={formData.title}
-            onChange={handleInputChange} */
             required
             className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
@@ -81,8 +77,6 @@ const AddRecipe = () => {
           <textarea
             id="ingredients"
             name="ingredients"
-            /* value={formData.ingredients}
-            onChange={handleInputChange} */
             required
             rows="4"
             className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -96,8 +90,6 @@ const AddRecipe = () => {
           <textarea
             id="instructions"
             name="instructions"
-            /*  value={formData.instructions}
-            onChange={handleInputChange} */
             required
             rows="6"
             className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -111,8 +103,6 @@ const AddRecipe = () => {
           <select
             id="cuisine"
             name="cuisine"
-            /* value={formData.cuisine}
-            onChange={handleInputChange} */
             className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             <option value="Italian">Italian</option>
@@ -131,8 +121,6 @@ const AddRecipe = () => {
             type="number"
             id="prepTime"
             name="prepTime"
-            /*  value={formData.prepTime}
-            onChange={handleInputChange} */
             required
             min="0"
             className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -147,10 +135,8 @@ const AddRecipe = () => {
             <div className="flex items-center gap-2">
               <input
                 type="checkbox"
-                // id={category.toLowerCase()}
                 name="Breakfast"
                 value="Breakfast"
-                // checked={formData.categories.includes(category)}
                 onChange={handleChecked}
                 className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
               />
@@ -161,7 +147,6 @@ const AddRecipe = () => {
                 type="checkbox"
                 name="Lunch"
                 value="Lunch"
-                // checked={formData.categories.includes(category)}
                 onChange={handleChecked}
                 className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
               />
@@ -172,7 +157,6 @@ const AddRecipe = () => {
                 type="checkbox"
                 name="Dinner"
                 value="Dinner"
-                // checked={formData.categories.includes(category)}
                 onChange={handleChecked}
                 className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
               />
@@ -183,7 +167,6 @@ const AddRecipe = () => {
                 type="checkbox"
                 name="Dessert"
                 value="Dessert"
-                // checked={formData.categories.includes(category)}
                 onChange={handleChecked}
                 className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
               />
@@ -194,7 +177,6 @@ const AddRecipe = () => {
                 type="checkbox"
                 name="Vegan"
                 value="Vegan"
-                // checked={formData.categories.includes(category)}
                 onChange={handleChecked}
                 className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
               />
@@ -212,7 +194,6 @@ const AddRecipe = () => {
             id="likes"
             name="likes"
             value={0}
-            // value={formData.likes}
             readOnly
             className="border border-gray-300 rounded-md p-2 bg-gray-100 cursor-not-allowed"
           />
