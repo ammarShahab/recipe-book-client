@@ -86,11 +86,18 @@ const NavBar = () => {
         {user ? (
           <>
             <div>
-              <a id="clickable">◕‿‿◕</a>
+              {/* <a id="clickable"> */}
+              <img
+                id="clickable"
+                className="btn w-9 h-9 b-0 p-0 rounded-full overflow-hidden"
+                src={`${user ? user?.photoURL : ""}`}
+              />
+              {/* </a> */}
               <Tooltip anchorSelect="#clickable" clickable>
                 <Link to="/" onClick={handleLogOut}>
                   Log Out
                 </Link>
+                <p>{user?.displayName}</p>
               </Tooltip>
             </div>
             {/*  <a id="clickable">
