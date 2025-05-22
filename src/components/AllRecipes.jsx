@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLoaderData } from "react-router";
 import RecipeCard from "./RecipeCard";
 
 const AllRecipes = () => {
-  const recipes = useLoaderData();
+  const initialRecipes = useLoaderData();
+  const [recipes, setRecipes] = useState([initialRecipes]);
   console.log(recipes);
 
   return (
