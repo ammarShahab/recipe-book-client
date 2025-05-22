@@ -1,5 +1,5 @@
 import React, { use } from "react";
-import { Link, NavLink } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
 import logo from "../assets/images/logo.png";
 import AuthContext from "./context/AuthContext";
 import toast from "react-hot-toast";
@@ -7,7 +7,8 @@ import { Tooltip } from "react-tooltip";
 
 const NavBar = () => {
   const { user, logOut, setUser } = use(AuthContext);
-  console.log(user);
+  console.log(user?.email);
+  const navigate = useNavigate();
 
   const handleLogOut = () => {
     logOut()
@@ -36,7 +37,7 @@ const NavBar = () => {
         All Recipes
       </NavLink>
       {user && (
-        <NavLink className="py-3" to="/myrecipes">
+        <NavLink className="py-3" to={`/myrecipes/${user?.email}`}>
           My Recipes
         </NavLink>
       )}

@@ -28,7 +28,9 @@ const router = createBrowserRouter([
       },
       { path: "/addrecipes", element: <AddRecipe></AddRecipe> },
       {
-        path: "/myrecipes",
+        path: "/myrecipes/:email",
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/recipes-email/${params.email}`),
         element: (
           <PrivateRouter>
             <MyRecipes></MyRecipes>

@@ -38,7 +38,7 @@ const RecipeDetails = () => {
             <span>Preparation Time: {prepTime} min</span>
           </div>
           <div className="flex flex-wrap gap-2 mb-3">
-            {isChecked.map((tag) => (
+            {isChecked?.map((tag) => (
               <span
                 key={tag}
                 className="bg-cyan-100 text-cyan-800 text-xs font-medium px-2.5 py-1 rounded"

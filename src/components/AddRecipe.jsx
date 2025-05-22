@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import { data } from "react-router";
 import Swal from "sweetalert2";
+import AuthContext from "./context/AuthContext";
 
 const AddRecipe = () => {
   const [isChecked, setIsChecked] = useState([]);
+  const loggedInUser = use(AuthContext);
+  console.log(loggedInUser?.user?.email);
 
   const handleChecked = (e) => {
     e.preventDefault();
@@ -29,6 +32,8 @@ const AddRecipe = () => {
     const cuisine = form.cuisine.value;
     const prepTime = form.prepTime.value;
     const likes = form.likes.value;
+    const email = loggedInUser?.user?.email;
+    const name = loggedInUser?.user?.displayName;
 
     /* console.log(
       image,
@@ -49,6 +54,9 @@ const AddRecipe = () => {
       prepTime,
       likes,
       isChecked,
+      loggedInUser,
+      email,
+      name,
     };
 
     console.log(newAddedRecipes);
