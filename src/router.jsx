@@ -22,9 +22,9 @@ const router = createBrowserRouter([
       { path: "/", element: <Home></Home> },
       {
         path: "/allrecipes",
-        loader: () => fetch("http://localhost:3000/recipes"),
+        // loader: () => fetch("http://localhost:3000/recipes"),
         element: <AllRecipes></AllRecipes>,
-        hydrateFallbackElement: <Loading></Loading>,
+        // hydrateFallbackElement: <Loading></Loading>,
       },
       { path: "/addrecipes", element: <AddRecipe></AddRecipe> },
       {

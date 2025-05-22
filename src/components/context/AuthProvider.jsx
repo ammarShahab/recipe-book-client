@@ -12,6 +12,16 @@ import {
 import { auth } from "../../../public/firebase/firebase.config";
 
 const AuthProvider = ({ children }) => {
+  const [recipes, setRecipes] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:3000/recipes")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setRecipes(data);
+      });
+  }, []);
+
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -64,6 +74,8 @@ const AuthProvider = ({ children }) => {
     googleSignIn,
     isLoading,
     setIsLoading,
+    recipes,
+    setRecipes,
   };
   return <AuthContext value={userInfo}>{children}</AuthContext>;
 };
