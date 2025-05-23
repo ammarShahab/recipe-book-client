@@ -14,7 +14,7 @@ import { auth } from "../../../public/firebase/firebase.config";
 const AuthProvider = ({ children }) => {
   /* const [recipes, setRecipes] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:3000/recipes")
+    fetch("https://b11a10-server-side-ashahab007.vercel.app/recipes")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
