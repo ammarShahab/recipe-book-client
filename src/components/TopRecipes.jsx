@@ -1,20 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { Link } from "react-router";
 import { Typewriter } from "react-simple-typewriter";
+import AuthContext from "./context/AuthContext";
 
 const TopRecipes = () => {
+  const { setIsLoading } = use(AuthContext);
   const [topRecipes, setTopRecipes] = useState([]);
 
   useEffect(() => {
-    fetch("https://b11a10-server-side-ashahab007.vercel.app/top-recipes")
+    fetch("http://localhost:3000/top-recipes")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         setTopRecipes(data);
+        setIsLoading(false);
       });
-  }, []);
+  }, [setIsLoading]);
 
   console.log(topRecipes);
+
+  const handleViewDetails = (id) => {
+    setIsLoading(false);
+    console.log(id);
+  };
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-6 mt-10 mb-20 bg-lime-100 p-4 rounded-2xl">
@@ -50,7 +58,10 @@ const TopRecipes = () => {
             <p className="text-gray-600">Cuisine: {recipe.cuisine}</p>
             <p className="text-gray-600">Likes: {recipe.likes}</p>
             <Link to={`/recipe/${recipe._id}`}>
-              <button className="mt-3 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition">
+              <button
+                onClick={() => handleViewDetails(recipe._id)}
+                className="mt-3 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition"
+              >
                 View Details
               </button>
             </Link>

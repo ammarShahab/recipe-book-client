@@ -1,15 +1,25 @@
-import React from "react";
-import { Link } from "react-router";
+import React, { use } from "react";
+import { Link, useNavigate } from "react-router";
+import AuthContext from "./context/AuthContext";
 
 const RecipeCard = ({ recipe }) => {
   console.log(recipe);
+
+  const { setIsLoading } = use(AuthContext);
+
   const { _id, title, likes, cuisine, image, prepTime, ingredients } = recipe;
+  const navigate = useNavigate();
+
+  const handleViewDetails = (id) => {
+    setIsLoading(false);
+    navigate(`/recipe/${id}`);
+  };
 
   return (
     <div className="flex flex-col max-w-lg p-6 space-y-6 overflow-hidden rounded-lg shadow-lg dark:bg-gray-50 dark:text-gray-800 mt-10">
       <div>
         <img
-          src={recipe.image}
+          src={image}
           alt=""
           className="object-cover w-full mb-4 h-60 sm:h-96 dark:bg-gray-500 rounded-2xl "
         />
@@ -19,14 +29,15 @@ const RecipeCard = ({ recipe }) => {
           <span className="font-bold">Ingredients: </span>
           {ingredients}
         </p>
-        <Link to={`/recipe/${_id}`}>
-          <button
-            type="button"
-            className="mt-10 btn btn-primary flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md"
-          >
-            View Details
-          </button>
-        </Link>
+        {/* <Link to={`/recipe/${_id}`}> */}
+        <button
+          onClick={() => handleViewDetails(_id)}
+          type="button"
+          className="mt-10 btn btn-primary flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md"
+        >
+          View Details
+        </button>
+        {/* </Link> */}
       </div>
       <div className="flex flex-wrap justify-between">
         <div className="flex space-x-2 text-sm dark:text-gray-600">

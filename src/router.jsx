@@ -22,8 +22,7 @@ const router = createBrowserRouter([
       { path: "/", element: <Home></Home> },
       {
         path: "/allrecipes",
-        loader: () =>
-          fetch("https://b11a10-server-side-ashahab007.vercel.app/recipes"),
+        loader: () => fetch("http://localhost:3000/recipes"),
         element: <AllRecipes></AllRecipes>,
         hydrateFallbackElement: <Loading></Loading>,
       },
@@ -31,9 +30,7 @@ const router = createBrowserRouter([
       {
         path: "/myrecipes/:email",
         loader: ({ params }) =>
-          fetch(
-            `https://b11a10-server-side-ashahab007.vercel.app/recipes-email/${params.email}`
-          ),
+          fetch(`http://localhost:3000/recipes-email/${params.email}`),
         element: (
           <PrivateRouter>
             <MyRecipes></MyRecipes>
@@ -43,9 +40,7 @@ const router = createBrowserRouter([
       {
         path: "/recipe/:id",
         loader: ({ params }) =>
-          fetch(
-            `https://b11a10-server-side-ashahab007.vercel.app/recipes/${params.id}`
-          ),
+          fetch(`http://localhost:3000/recipes/${params.id}`),
         element: (
           <PrivateRouter>
             <RecipeDetails></RecipeDetails>
