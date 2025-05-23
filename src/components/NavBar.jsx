@@ -1,12 +1,14 @@
-import React, { use } from "react";
+import React, { use, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router";
 import logo from "../assets/images/logo.png";
 import AuthContext from "./context/AuthContext";
 import toast from "react-hot-toast";
 import { Tooltip } from "react-tooltip";
+import { LuMoon, LuSun } from "react-icons/lu";
 
 const NavBar = () => {
-  const { user, logOut, setUser } = use(AuthContext);
+  const { user, logOut, setUser, theme, setTheme } = use(AuthContext);
+  // const [theme, setTheme] = useState("");
   console.log(user?.email);
   const navigate = useNavigate();
 
@@ -41,14 +43,14 @@ const NavBar = () => {
           My Recipes
         </NavLink>
       )}
-
-      {/*  <NavLink className="py-3" to="/myprofile">
-        My Profile
-      </NavLink> */}
     </>
   );
   return (
-    <div className="navbar bg-[#584b45] shadow-sm">
+    <div
+      className={`navbar bg-[#584b45] ${
+        theme ? "dark" : ""
+      } dark:bg-zinc-600 shadow-sm`}
+    >
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost xl:hidden">
@@ -82,18 +84,37 @@ const NavBar = () => {
       <div className="navbar-center menu menu-horizontal hidden sm:hidden md:hidden lg:hidden xl:block px-1 space-x-4 text-[#dedbda]">
         {links}
       </div>
-
+      {/* toggle dark light */}
       <div className="navbar-end space-x-4">
+        <div className="bg-[#584b45] grid place-items-center rounded-xl">
+          <div
+            className="bg-[#d4c5bf5c] dark:bg-zinc-
+          00 p-1 flex justify-center items-center rounded-xl"
+          >
+            <button
+              onClick={() => setTheme("")}
+              className="bg-transparent hover:bg-zinc-400 p-2 rounded-lg dark:text-white text-black"
+            >
+              <LuSun></LuSun>
+            </button>
+            <button
+              onClick={() => setTheme("dark")}
+              className="bg-transparent hover:bg-zinc-400 p-2 rounded-lg 
+            dark:text-white text-black"
+            >
+              <LuMoon></LuMoon>
+            </button>
+          </div>
+        </div>
         {user ? (
           <>
             <div>
-              {/* <a id="clickable"> */}
               <img
                 id="clickable"
                 className="btn w-9 h-9 b-0 p-0 rounded-full overflow-hidden object-cover"
                 src={`${user ? user?.photoURL : ""}`}
               />
-              {/* </a> */}
+
               <Tooltip
                 className="p-4 space-y-4"
                 anchorSelect="#clickable"
@@ -109,51 +130,6 @@ const NavBar = () => {
                 </Link>
               </Tooltip>
             </div>
-            {/*  <a id="clickable">
-              <div className="btn w-9 h-9 b-0 p-0 rounded-full overflow-hidden">
-                <img
-                  className="w-full h-full object-cover"
-                  src={`${user ? user?.photoURL : ""}`}
-                />
-              </div>
-            </a>
-            <Tooltip
-              // id="my-tooltip-click"
-              content={user?.displayName}
-              // events={["click"]}
-              anchorSelect="#clickable"
-              clickable
-            >
-              <Link to="/" onClick={handleLogOut}>
-                Log Out
-              </Link>
-            </Tooltip> */}
-
-            {/* <div className="dropdown dropdown-bottom dropdown-end">
-              <div
-                tabIndex={0}
-                role="button"
-                className="btn w-9 h-9 b-0 p-0 rounded-full overflow-hidden"
-              >
-                <img
-                  className="w-full h-full object-cover"
-                  src={`${user ? user.photoURL : ""}`}
-                />
-              </div>
-              <ul
-                tabIndex={0}
-                className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
-              >
-                <li>
-                  <a>{user.displayName}</a>
-                </li>
-                <li>
-                  <Link to="/" onClick={handleLogOut}>
-                    Log Out
-                  </Link>
-                </li>
-              </ul>
-            </div> */}
           </>
         ) : (
           <>

@@ -46,7 +46,7 @@ const MyRecipes = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 p-5">
-      {myrecipes.length == 0 ? (
+      {myrecipes?.length == 0 ? (
         <div className="text-center mt-10">
           <h1 className="font-extrabold text-4xl">No Recipe Found</h1>
         </div>
@@ -55,20 +55,20 @@ const MyRecipes = () => {
           {myrecipes?.map((myrecipe) => (
             <div className="bg-white rounded-lg shadow-lg w-full max-w-md overflow-hidden">
               <img
-                src={myrecipe.image}
+                src={myrecipe?.image}
                 alt="Fluffy Pancakes"
                 className="w-full h-48 object-cover"
               />
               <div className="p-6">
                 <h2 className="text-2xl font-bold text-gray-800 mb-2">
-                  {myrecipe.title}
+                  {myrecipe?.title}
                 </h2>
                 <div className="flex justify-between text-gray-600 text-sm mb-3">
                   {/* <span>Cuisine: Others</span> */}
-                  <span>Preparation Time: {myrecipe.prepTime} min</span>
+                  <span>Preparation Time: {myrecipe?.prepTime} min</span>
                 </div>
                 <div className="flex flex-wrap gap-2 mb-3">
-                  {myrecipe.isChecked.map((tag) => (
+                  {myrecipe?.isChecked?.map((tag) => (
                     <span
                       key={tag}
                       className="bg-cyan-100 text-cyan-800 text-xs font-medium px-2.5 py-1 rounded"
@@ -82,7 +82,7 @@ const MyRecipes = () => {
                     Ingredients
                   </h3>
                   <ul className="list-disc pl-5 text-gray-600 text-sm">
-                    {myrecipe.ingredients}
+                    {myrecipe?.ingredients}
                   </ul>
                 </div>
                 <div className="mb-4">
@@ -90,7 +90,7 @@ const MyRecipes = () => {
                     Instructions
                   </h3>
                   <p className="text-gray-600 text-sm">
-                    {myrecipe.instructions}
+                    {myrecipe?.instructions}
                   </p>
                 </div>
                 <div className="flex gap-3 mb-3">
@@ -101,14 +101,14 @@ const MyRecipes = () => {
                     Update
                   </button>
                   <button
-                    onClick={() => handleDelete(myrecipe._id)}
+                    onClick={() => handleDelete(myrecipe?._id)}
                     className="bg-red-500 hover:bg-red-600 text-white text-sm font-medium px-4 py-2 rounded transition-colors"
                   >
                     Delete
                   </button>
                 </div>
                 <div className="text-gray-600 text-sm">
-                  Likes: {myrecipe.likes}
+                  Likes: {myrecipe?.likes}
                 </div>
               </div>
             </div>

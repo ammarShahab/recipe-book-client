@@ -2,6 +2,8 @@
 
 @import "tailwindcss";
 @plugin "daisyui";
+/* toggle dark light */
+@custom-variant dark (&:where(.dark, .dark *));
 
 .font-bitter {
   font-family: "Bitter", serif;

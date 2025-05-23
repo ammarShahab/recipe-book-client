@@ -14,6 +14,7 @@ const Banner = () => {
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 ">
             Daily Delicious Discoveries
           </h1>
+
           <p className="text-lg md:text-xl text-white max-w-2xl">
             Explore a world of flavors with daily updated recipes. Find your
             next favorite dish and keep your kitchen inspired.

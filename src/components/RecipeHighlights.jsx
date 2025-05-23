@@ -1,7 +1,9 @@
-import React from "react";
+import React, { use } from "react";
 import CountUp from "react-countup";
+import AuthContext from "./context/AuthContext";
 
 const RecipeHighlights = () => {
+  const { theme, setTheme } = use(AuthContext);
   const stats = [
     {
       title: "Recipes Added",
@@ -30,30 +32,38 @@ const RecipeHighlights = () => {
   ];
 
   return (
-    <section className="bg-gray-100 py-10 text-center mt-10 rounded-2xl mb-20">
-      <h2 className="text-5xl font-bold mb-6 font-bitter">Recipe Highlights</h2>
-      <p className="text-xl text-gray-600">
+    <section
+      className={`bg-gray-100 py-10 text-center mt-10 rounded-2xl mb-20 ${
+        theme ? "dark" : ""
+      }  dark:bg-zinc-600`}
+    >
+      <h2 className="text-5xl font-bold mb-6 font-bitter dark:text-white">
+        Recipe Highlights
+      </h2>
+      <p className="text-xl text-gray-600 dark:text-white">
         Builds trust by showing achievements and growth.
       </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto px-4 mt-10">
         {stats.map((stat, index) => (
           <div
             key={index}
-            className={`bg-gradient-to-br ${stat.gradient} rounded-2xl shadow p-6`}
+            className={`bg-gradient-to-br  ${
+              theme ? "dark" : stat.gradient
+            }  dark:bg-zinc-500 rounded-2xl shadow p-6`}
           >
             <div className="text-left space-y-4">
-              <h1 className="text-3xl font-bold mt-2 text-gray-700">
+              <h1 className="text-3xl font-bold mt-2 text-gray-700 dark:text-white">
                 {stat.title}
               </h1>
-              <p>{stat.subtitle}</p>
+              <p className="dark:text-white">{stat.subtitle}</p>
               {
                 <CountUp
-                  className="text-4xl font-bold"
+                  className="text-4xl font-bold dark:text-white"
                   end={stat.value}
                   duration={10}
                 ></CountUp>
               }
-              <span className="text-4xl font-bold">+</span>
+              <span className="text-4xl font-bold dark:text-white">+</span>
             </div>
           </div>
         ))}

@@ -15,6 +15,7 @@ import Swal from "sweetalert2";
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [theme, setTheme] = useState("");
 
   // const [recipes, setRecipes] = useState([]);
 
@@ -112,6 +113,8 @@ const AuthProvider = ({ children }) => {
     googleSignIn,
     isLoading,
     setIsLoading,
+    theme,
+    setTheme,
   };
   return <AuthContext value={userInfo}>{children}</AuthContext>;
 };

@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
+import AuthContext from "./context/AuthContext";
 
 const NewsLetter = () => {
+  const { theme, setTheme } = useContext(AuthContext);
   return (
     <div
       className="w-full dark:bg-gray-500 mb-20 rounded-2xl"
@@ -13,11 +15,15 @@ const NewsLetter = () => {
       }}
     >
       <div className="flex flex-col flex-wrap content-center lg:mr-[50%] justify-center p-4 py-20 mx-auto md:p-10">
-        <div className="bg-[#e3dccce8] p-20 rounded-2xl">
-          <h1 className="text-5xl antialiased font-bold leading-none text-center dark:text-gray-800 font-bitter">
+        <div
+          className={`bg-[#e3dccce8] p-20 rounded-2xl ${
+            theme ? "dark" : ""
+          }  dark:bg-zinc-600`}
+        >
+          <h1 className="text-5xl antialiased font-bold leading-none text-center font-bitter dark:text-white">
             Get Our Updates
           </h1>
-          <p className="pt-2 pb-8 text-xl antialiased text-center dark:text-gray-800">
+          <p className="pt-2 pb-8 text-xl antialiased text-center dark:text-white">
             Find out about events and other news
           </p>
           <div className="flex flex-row">
