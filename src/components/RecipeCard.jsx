@@ -9,7 +9,7 @@ const RecipeCard = ({ recipe }) => {
     <div className="flex flex-col max-w-lg p-6 space-y-6 overflow-hidden rounded-lg shadow-lg dark:bg-gray-50 dark:text-gray-800 mt-10">
       <div>
         <img
-          src={image}
+          src={recipe.image}
           alt=""
           className="object-cover w-full mb-4 h-60 sm:h-96 dark:bg-gray-500 rounded-2xl "
         />

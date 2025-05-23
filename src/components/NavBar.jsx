@@ -42,9 +42,9 @@ const NavBar = () => {
         </NavLink>
       )}
 
-      <NavLink className="py-3" to="/myprofile">
+      {/*  <NavLink className="py-3" to="/myprofile">
         My Profile
-      </NavLink>
+      </NavLink> */}
     </>
   );
   return (

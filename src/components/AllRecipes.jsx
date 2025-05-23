@@ -1,12 +1,13 @@
 import React, { use, useState } from "react";
 import RecipeCard from "./RecipeCard";
 import AuthContext from "./context/AuthContext";
+import { useLoaderData } from "react-router";
 
 const AllRecipes = () => {
-  /* const initialRecipes = useLoaderData();
-  const [recipes, setRecipes] = useState([initialRecipes]);
-  */
-  const { recipes, setRecipes } = use(AuthContext);
+  const initialRecipes = useLoaderData();
+  const [recipes, setRecipes] = useState(initialRecipes);
+
+  // const { recipes, setRecipes } = use(AuthContext);
   console.log(recipes);
   return (
     <div className="mt-20 mb-40">
