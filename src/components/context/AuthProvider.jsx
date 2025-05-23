@@ -10,10 +10,15 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../../../public/firebase/firebase.config";
+import Swal from "sweetalert2";
 
 const AuthProvider = ({ children }) => {
-  /* const [recipes, setRecipes] = useState([]);
-  useEffect(() => {
+  const [user, setUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // const [recipes, setRecipes] = useState([]);
+
+  /*  useEffect(() => {
     fetch("http://localhost:3000/recipes")
       .then((res) => res.json())
       .then((data) => {
@@ -22,8 +27,41 @@ const AuthProvider = ({ children }) => {
       });
   }, []); */
 
-  const [user, setUser] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const handleDelete = (id) => {
+    console.log(id);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      console.log(result.isConfirmed);
+      if (result.isConfirmed) {
+        fetch(`http://localhost:3000/recipes/${recipes._id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log("After delete", data);
+
+            if (data.deletedCount) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your item has been deleted.",
+                icon: "success",
+              });
+            }
+            const remainingCoffees = recipes.filter(
+              (recipe) => recipe._id !== _id
+            );
+            setRecipes(remainingCoffees);
+          });
+      }
+    });
+  };
 
   const provider = new GoogleAuthProvider();
   const createUser = (email, password) => {
