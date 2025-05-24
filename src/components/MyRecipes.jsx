@@ -4,11 +4,11 @@ import Swal from "sweetalert2";
 
 const MyRecipes = () => {
   const myrecipes = useLoaderData();
-  console.log(myrecipes);
+  // console.log(myrecipes);
   const [isDelete, setIsDelete] = useState(myrecipes);
 
   const handleDelete = (id) => {
-    console.log(id);
+    // console.log(id);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -18,7 +18,7 @@ const MyRecipes = () => {
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
-      console.log(result.isConfirmed);
+      // console.log(result.isConfirmed);
       if (result.isConfirmed) {
         fetch(
           `https://b11a10-server-side-ashahab007.vercel.app/recipes/${id}`,
@@ -28,7 +28,7 @@ const MyRecipes = () => {
         )
           .then((res) => res.json())
           .then((data) => {
-            console.log("After delete", data);
+            // console.log("After delete", data);
 
             if (data.deletedCount) {
               Swal.fire({

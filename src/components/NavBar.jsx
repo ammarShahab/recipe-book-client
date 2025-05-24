@@ -9,7 +9,7 @@ import { LuMoon, LuSun } from "react-icons/lu";
 const NavBar = () => {
   const { user, logOut, setUser, theme, setTheme } = use(AuthContext);
   // const [theme, setTheme] = useState("");
-  console.log(user?.email);
+  // console.log(user?.email);
   const navigate = useNavigate();
 
   const handleLogOut = () => {
@@ -20,7 +20,7 @@ const NavBar = () => {
         navigate("/");
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
   };
 
@@ -141,10 +141,7 @@ const NavBar = () => {
             >
               Log In
             </Link>
-            <Link
-              to="/auth/register"
-              className="btn btn-active btn-warning text-xs"
-            >
+            <Link to="/auth/register" className="btn btn-active btn-warning">
               Register
             </Link>
           </>

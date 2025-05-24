@@ -6,23 +6,23 @@ import AuthContext from "./context/AuthContext";
 const TopRecipes = () => {
   const { setIsLoading, theme, setTheme } = use(AuthContext);
   const [topRecipes, setTopRecipes] = useState([]);
-  console.log(theme);
+  // console.log(theme);
 
   useEffect(() => {
     fetch("https://b11a10-server-side-ashahab007.vercel.app/top-recipes")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setTopRecipes(data);
         setIsLoading(false);
       });
   }, [setIsLoading]);
 
-  console.log(topRecipes);
+  // console.log(topRecipes);
 
   const handleViewDetails = (id) => {
     setIsLoading(false);
-    console.log(id);
+    // console.log(id);
   };
 
   return (

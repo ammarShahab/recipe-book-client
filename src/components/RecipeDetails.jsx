@@ -4,7 +4,7 @@ import { useLoaderData } from "react-router";
 
 const RecipeDetails = () => {
   const recipe = useLoaderData();
-  console.log(recipe);
+  // console.log(recipe);
   const {
     title,
     prepTime,

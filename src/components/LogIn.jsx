@@ -8,7 +8,7 @@ const LogIn = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const { user, userLogin, setUser, provider, googleSignIn, setIsLoading } =
     use(AuthContext);
-  console.log(user);
+  // console.log(user);
 
   const navigate = useNavigate();
 
@@ -56,7 +56,7 @@ const LogIn = () => {
         navigate("/");
       })
       .catch((error) => {
-        console.log(error.message);
+        // console.log(error.message);
       });
   };
   return (

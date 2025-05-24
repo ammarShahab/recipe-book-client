@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router";
 import AuthContext from "./context/AuthContext";
 
 const RecipeCard = ({ recipe }) => {
-  console.log(recipe);
+  // console.log(recipe);
 
   const { setIsLoading } = use(AuthContext);
 

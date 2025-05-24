@@ -6,11 +6,11 @@ import AuthContext from "./context/AuthContext";
 const AddRecipe = () => {
   const [isChecked, setIsChecked] = useState([]);
   const loggedInUser = use(AuthContext);
-  console.log(loggedInUser?.user?.email);
+  // console.log(loggedInUser?.user?.email);
 
   const handleChecked = (e) => {
     e.preventDefault();
-    console.log(e.target);
+    // console.log(e.target);
 
     const { value, checked } = e.target;
     if (checked) {
@@ -59,7 +59,7 @@ const AddRecipe = () => {
       name,
     };
 
-    console.log(newAddedRecipes);
+    // console.log(newAddedRecipes);
 
     fetch("https://b11a10-server-side-ashahab007.vercel.app/recipes", {
       method: "POST",

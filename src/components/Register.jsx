@@ -15,7 +15,7 @@ const Register = () => {
     const email = e.target.email.value;
     const photoURL = e.target.photoURL.value;
     const password = e.target.password.value;
-    console.log(name, email, photoURL, password);
+    // console.log(name, email, photoURL, password);
 
     if (password.length < 6) {
       setErrorMessage("❌ Must be at least 6 characters long.");
@@ -36,14 +36,14 @@ const Register = () => {
     createUser(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log(user);
+        // console.log(user);
         updateUser({ displayName: name, photoURL: photoURL })
           .then(() => {
             setUser({ ...user, displayName: name, photoURL: photoURL });
-            console.log(user);
+            // console.log(user);
           })
           .catch((error) => {
-            console.log(error);
+            // console.log(error);
             setUser(user);
           });
 
