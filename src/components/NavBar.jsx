@@ -76,24 +76,26 @@ const NavBar = () => {
             {links}
           </ul>
         </div>
-        <div className="flex gap-2 items-center">
-          <img className="w-16" src={logo} alt="logo" />
-          <a className="text-xl font-extrabold text-[#dedbda]">DishDiary</a>
+        <div className="flex gap-0 sm:gap-2 items-center">
+          <img className="w-8 sm:w-16" src={logo} alt="logo" />
+          <a className="tesxt-xs sm:text-xl font-extrabold text-[#dedbda] ">
+            DishDiary
+          </a>
         </div>
       </div>
       <div className="navbar-center menu menu-horizontal hidden sm:hidden md:hidden lg:hidden xl:block px-1 space-x-4 text-[#dedbda]">
         {links}
       </div>
-      {/* toggle dark light */}
       <div className="navbar-end space-x-4">
-        <div className="bg-[#584b45] grid place-items-center rounded-xl">
+        {/* toggle dark light */}
+        <div className="bg-[#584b45] rounded-xl w-14">
           <div
             className="bg-[#d4c5bf5c] dark:bg-zinc-
-          00 p-1 flex justify-center items-center rounded-xl"
+          00 p-1 flex justify-center items-center rounded-xl "
           >
             <button
               onClick={() => setTheme("")}
-              className="bg-transparent hover:bg-zinc-400 p-2 rounded-lg dark:text-white text-black"
+              className="bg-transparent  hover:bg-zinc-400 p-2 rounded-lg dark:text-white text-black"
             >
               <LuSun></LuSun>
             </button>
@@ -139,7 +141,10 @@ const NavBar = () => {
             >
               Log In
             </Link>
-            <Link to="/auth/register" className="btn btn-active btn-warning">
+            <Link
+              to="/auth/register"
+              className="btn btn-active btn-warning text-xs"
+            >
               Register
             </Link>
           </>
