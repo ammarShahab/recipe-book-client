@@ -20,7 +20,7 @@ const AuthProvider = ({ children }) => {
   // const [recipes, setRecipes] = useState([]);
 
   /*  useEffect(() => {
-    fetch("http://localhost:3000/recipes")
+    fetch("https://b11a10-server-side-ashahab007.vercel.app/recipes")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -41,9 +41,12 @@ const AuthProvider = ({ children }) => {
     }).then((result) => {
       console.log(result.isConfirmed);
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/recipes/${recipes._id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://b11a10-server-side-ashahab007.vercel.app/recipes/${recipes._id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             console.log("After delete", data);

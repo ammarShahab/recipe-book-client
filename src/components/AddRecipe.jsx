@@ -61,7 +61,7 @@ const AddRecipe = () => {
 
     console.log(newAddedRecipes);
 
-    fetch("http://localhost:3000/recipes", {
+    fetch("https://b11a10-server-side-ashahab007.vercel.app/recipes", {
       method: "POST",
       headers: {
         "content-type": "application/json",

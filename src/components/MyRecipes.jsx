@@ -20,9 +20,12 @@ const MyRecipes = () => {
     }).then((result) => {
       console.log(result.isConfirmed);
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/recipes/${id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://b11a10-server-side-ashahab007.vercel.app/recipes/${id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             console.log("After delete", data);
