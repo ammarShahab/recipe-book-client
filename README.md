@@ -18,6 +18,18 @@
 
 ---
 
+## Project Purpose
+
+**Dish Diary** is a full-stack recipe management web application built to help users seamlessly create, organize, and explore recipes. The platform enables individuals to:
+
+- Add and manage their own personal recipes
+- Browse recipes added by other users
+- Like and wishlist favorite dishes
+- Discover popular recipes based on community likes
+
+By combining user-generated content with modern tools like Firebase authentication and a dynamic UI, Dish Diary offers a smooth and personalized experience for food enthusiasts. The project aims to simplify everyday cooking and foster a creative recipe-sharing community.
+
+
 ## 🛠️ Tech Stack
 
 ### Frontend:
