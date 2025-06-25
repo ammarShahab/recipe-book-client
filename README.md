@@ -94,3 +94,8 @@ For a complete list, see [`package.json`](./package.json).
 git clone https://github.com/your-username/dish-diary.git
 cd dish-diary
 ```
+
+## 🧑‍💻 Author
+
+Developed by **Ammar Shahab**  
+📫 For collaboration or feedback: [ashahab007@gmail.com]
