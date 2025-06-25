@@ -77,6 +77,15 @@
 ---
 For a complete list, see [`package.json`](./package.json).
 
+## 📂 Scripts
+
+| Command             | Description                        |
+| ------------------- | ---------------------------------- |
+| `npm run dev`       | Start the development server       |
+| `npm run build`     | Build the app for production       |
+| `npm run preview`   | Preview the production build       |
+| `npm run lint`      | Run ESLint to check code quality   |
+
 ## 🚀 Getting Started
 
 ### 1. Clone the repository
